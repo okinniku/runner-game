@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ゲームランチャー</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: #222;
+        }
+
+        button {
+            font-size: 24px;
+            padding: 20px 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="openRunner()">ゲームを起動</button>
+
+    <script>
+        function openRunner() {
+            const width = 512;
+            const height = 300;
+
+            // 現在のスクリーンサイズから中央配置の座標を計算
+            const left = (window.screen.width - width) / 2;
+            const top = (window.screen.height - height) / 2;
+
+            // 新しいウィンドウを開く
+            const win = window.open(
+                "runner.html", // ★ここはあなたの pygbag HTMLファイル名に置き換えてください
+                "RunnerWindow",
+                `width=${width},height=${height},left=${left},top=${top},resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no`
+            );
+
+            // ブロックされているかチェック
+            if (!win) {
+                alert("ポップアップがブロックされました。ブラウザのポップアップブロックを解除してください。");
+            }
+        }
+    </script>
+
+</body>
+</html>
